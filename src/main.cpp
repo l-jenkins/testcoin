@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0xae88cb716473ddaed69acebeceaf674461fc0a5c9a9727a4b4cf24035c8adcb0");
+uint256 hashGenesisBlock("0xffb873328f2cbbc0383901d6f65604b348803aa81351d6d104965b4768049fbf");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Testcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2746,7 +2746,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xf4;
         pchMessageStart[2] = 0xa6;
         pchMessageStart[3] = 0xe2;
-        hashGenesisBlock = uint256("0xae88cb716473ddaed69acebeceaf674461fc0a5c9a9727a4b4cf24035c8adcb0");
+        hashGenesisBlock = uint256("0xffb873328f2cbbc0383901d6f65604b348803aa81351d6d104965b4768049fbf");
     }
 
     //
@@ -2785,7 +2785,7 @@ bool InitBlockIndex() {
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("432184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("0474c27766c4d836d5ee66cdbb9f3bf4b66fea0d5feee535bd731d4c3c30df967629d77ea7deb99252fbe69b3c15bfc3cf9840a807b10220f4abf8c9edd644608e") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
@@ -2793,12 +2793,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1521509451;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 25844;
+        block.nNonce   = 755562;
 
         if (fTestNet)
         {
             block.nTime    = 1521509451;
-            block.nNonce   = 25844;
+            block.nNonce   = 755562;
         }
 
         //// debug print
@@ -2806,7 +2806,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0xf7d619e61dcb4878af5dfe68e68b03f3f17997e4dd0b1006ad54f6614cc52285"));
+        assert(block.hashMerkleRoot == uint256("0x4999fa4746c101981bff7fbe1cd2382bee01cdbd1cf64d87266cba8587a3b02c"));
 
 
         if (true && block.GetHash() != hashGenesisBlock)
@@ -3112,7 +3112,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfb, 0xc0, 0xb6, 0xdb }; // Testcoin: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xcd, 0x4f, 0x6a, 0x2e }; // Testcoin: increase each by adding 2 to bitcoin's value.
 
 
 void static ProcessGetData(CNode* pfrom)
